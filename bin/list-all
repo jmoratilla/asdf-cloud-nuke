@@ -6,7 +6,10 @@ set -o pipefail
 
 : "${GITHUB_API_TOKEN:=""}"
 
-readonly RELEASES_URL="https://api.github.com/repos/gruntwork-io/cloud-nuke/releases"
+repo_owner="gruntwork-io"
+repository="cloud-nuke"
+
+readonly RELEASES_URL="https://api.github.com/repos/${repo_owner}/${repository}/releases"
 
 #
 # https://github.com/rbenv/ruby-build/blob/ac92ec0507fad718e7abcf13540641937ecfef3f/bin/ruby-build#L1201
@@ -25,3 +28,4 @@ list_versions() {
 
 #
 echo "$(list_versions | sort_versions | tr '\n' ' ')"
+

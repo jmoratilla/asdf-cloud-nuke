@@ -4,6 +4,7 @@
 # repo_owner
 # repository
 # bin_name
+# extension
 
 
 set -e
@@ -22,6 +23,7 @@ install() {
   local repo_owner="gruntwork-io"
   local repository="cloud-nuke"
   local bin_name="cloud-nuke"
+  local extension=""
   local download_version=$(echo ${version} | cut -d'v' -f2)
   local bin_install_path="$install_path/bin"
   local bin_path="${bin_install_path}/${bin_name}"
@@ -42,7 +44,7 @@ install() {
   local filename="${bin_name}_${platform}"
 
   # If the file is a tar.gz file, then add the extension to the following variable
-  local download_filename="${filename}"
+  local download_filename="${filename}${extension}"
   local download_url="$(get_download_url $download_filename)"
   local tmp_bin_path="${TMPDIR}/${filename}"
   local tmp_path="${TMPDIR}/${bin_name}"
